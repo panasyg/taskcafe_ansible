@@ -12,12 +12,15 @@
     #     dest: /dist/taskcafe
     #     checksum: "sha256:https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
     #     mode: u=r,g-r,o=r
-  
+    - name: install epel-release
+      yum: name=epel-release state=present
     - name: start app
       ansible.builtin.command: pip install --upgrade pip
 
-    - name: install gdown
-      ansible.builtin.pip: name=gdown state=present
+    - pip:
+      virtualenv: /tmp/py3
+      virtualenv_command: /usr/bin/python3 -m venv
+      name: gdown
 
     - name: download file  
       ansible.builtin.command: /usr/local/bin/gdown --id 184-NI_GsCI7ztOligcleDLCTCfSLxfej   
