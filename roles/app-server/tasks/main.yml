@@ -23,7 +23,6 @@
 
     - name: download file
       ansible.builtin.command: /usr/local/bin/gdown --id 184-NI_GsCI7ztOligcleDLCTCfSLxfej   
-      dest: /dist
 
     - name: install redis deps
       yum: name={{item}} state=present
