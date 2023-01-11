@@ -13,10 +13,13 @@
     #     checksum: "sha256:https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
     #     mode: u=r,g-r,o=r
   
+    - name: start app
+      ansible.builtin.command: pip install --upgrade pip
+
     - name: install gdown
       ansible.builtin.pip: name=gdown state=present
 
-    - name: download file
+    - name: download file  
       ansible.builtin.command: /usr/local/bin/gdown --id 184-NI_GsCI7ztOligcleDLCTCfSLxfej   
 
     - name: install redis deps
