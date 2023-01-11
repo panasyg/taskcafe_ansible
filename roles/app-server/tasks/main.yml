@@ -6,12 +6,24 @@
       vars:
         golang_version: "1.15.1"
        
-    - name: Download binary from google drive
-      ansible.builtin.get_url:
-        url: "https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
-        dest: /dist/taskcafe
-        checksum: "sha256:https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
-        mode: u=r,g-r,o=r
+    # - name: Download binary from google drive
+    #   ansible.builtin.get_url:
+    #     url: "https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
+    #     dest: /dist/taskcafe
+    #     checksum: "sha256:https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
+    #     mode: u=r,g-r,o=r
+    - name: install epel-release
+      yum: name=epel-release state=present
+    
+    - name: install PIP
+      yum: name=python-pip state=present
+
+    - name: install PIP
+      pip: name=gdown state=present
+
+    - name: start app
+      ansible.builtin.command: /usr/local/bin/gdown --id 184-NI_GsCI7ztOligcleDLCTCfSLxfej   
+      dest: /dist
 
     - name: install redis deps
       yum: name={{item}} state=present
@@ -41,4 +53,4 @@
       shell: redis-server --daemonize yes
  
     - name: start app
-      ansible.builtin.command: ./dist/taskcafe web
+      ansible.builtin.command: /dist/taskcafe web
