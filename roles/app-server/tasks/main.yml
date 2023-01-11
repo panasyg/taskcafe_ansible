@@ -17,7 +17,7 @@
       with_items:
        - make
        - gcc
-      - wget
+       - wget
       tags: redis
 
     - name: download redis source
@@ -31,9 +31,9 @@
     - name: move compiled redis binaries
       shell: cp -f {{item}} /usr/local/bin chdir=/tmp/redis-{{redis.version}}/src
       with_items:
-      - redis-cli
-      - redis-server
-      - redis-benchmark
+       - redis-cli
+       - redis-server
+       - redis-benchmark
       tags: redis
       
     - name: run redis
