@@ -6,13 +6,13 @@
       vars:
         golang_version: "1.15.1"
        
-     - name: Download archive from google drive
+    - name: Download archive from google drive
        get_url:
         url: "https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
         dest: /dist/taskcafe
         mode: u=r,g-r,o=r
 
-     - name: install redis deps
+    - name: install redis deps
        yum: name={{item}} state=present
        with_items:
        - make
