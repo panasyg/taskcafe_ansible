@@ -14,9 +14,6 @@
     #     mode: u=r,g-r,o=r
     - name: install epel-release
       yum: name=epel-release state=present
-    
-    - name: install PIP
-      yum: name=python-pip state=present
 
     - name: install PIP
       pip: name=gdown state=present
