@@ -1,0 +1,21 @@
+---
+    - name: Update yum
+      yum:
+        update_cache: yes
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+    - name: Create nginx configuration directory
+      file:
+        path: /etc/nginx/conf.d
+        state: directory
+    - name: Send nginx load balancer configuration
+      template:
+        src: load_balancer.conf.j2
+        dest: /etc/nginx/conf.d/load_balancer.conf
+      vars:
+        app1_ip: ip1
+        app2_ip: ip2
+    - name: Restart nginx
+      service: name=nginx state=restarted enabled=yes

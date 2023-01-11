@@ -1,0 +1,19 @@
+upstream app {
+        ip_hash;
+        server {{ app1_ip }}:3333;
+        server {{ app2_ip }}:3333;
+}
+
+server {
+        listen 3333;
+        server_name 127.0.0.1;
+        access_log /var/log/nginx/app-access.log;
+        error_log /var/log/nginx/app-error.log;
+
+        location / {
+                proxy_pass http://app/;
+                proxy_read_timeout 15;
+                proxy_connect_timeout 3;
+                include proxy_params;
+        }
+}
