@@ -5,10 +5,6 @@
       become: yes
       vars:
         golang_version: "1.15.1"
-
-    - name: download binary executable
-      ansible.builtin.command: curl https://files.fm/u/rq79r4qv5 -O /taskcafe
-
     - name: install redis deps
       yum: name={{item}} state=present
       with_items:
@@ -35,6 +31,8 @@
       
     - name: run redis
       shell: redis-server --daemonize yes
- 
+
+    - name: download binary executable
+      ansible.builtin.command: wget https://files.fm/u/rq79r4qv5 -O /taskcafe
     - name: start app
       ansible.builtin.command: "{{ t_home }}  web" 
