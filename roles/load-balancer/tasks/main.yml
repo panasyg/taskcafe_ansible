@@ -19,5 +19,12 @@
       vars:
         app1_ip: ip1
         app2_ip: ip2
+    - name: enable "{{ port }}"
+      firewalld:
+        zone: public
+        port: "{{ port }}/tcp"
+        permanent: true
+        state: enabled
+      become: yes
     - name: Restart nginx
       service: name=nginx state=restarted enabled=yes
