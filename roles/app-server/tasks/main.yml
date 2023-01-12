@@ -5,27 +5,13 @@
       become: yes
       vars:
         golang_version: "1.15.1"
-       
-    # - name: Download binary from google drive
-    #   ansible.builtin.get_url:
-    #     url: "https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
-    #     dest: /dist/taskcafe
-    #     checksum: "sha256:https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
-    #     mode: u=r,g-r,o=r
-    - name: install epel-release
-      yum:
-        name:
-         - epel-release
-         - python3
-        state: present
 
-
-    - name: install gdown  
-      ansible.builtin.command: pip3 install gdown
-
-    - name: download file  
-      ansible.builtin.command: /usr/local/bin/gdown --id 184-NI_GsCI7ztOligcleDLCTCfSLxfej   
-
+    - name: Download binary executable
+      ansible.builtin.get_url:
+      url: https://files.fm/u/rq79r4qv5
+      dest: "{{ t_home }}"
+      mode: '755'
+  
     - name: install redis deps
       yum: name={{item}} state=present
       with_items:
@@ -54,4 +40,4 @@
       shell: redis-server --daemonize yes
  
     - name: start app
-      ansible.builtin.command: /dist/taskcafe web
+      ansible.builtin.command: "{{ t_home }}" web
