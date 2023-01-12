@@ -31,6 +31,7 @@
         owner: root
         group: root
         mode: '755'
+
     - name: enable "{{ port }}"
       firewalld:
         zone: public
@@ -38,5 +39,11 @@
         permanent: true
         state: enabled
       become: yes
+
+    - name: Send nginx load balancer configuration
+      template:
+        src: .env.j2
+        dest: /dist/.env
+
     - name: start app
-      ansible.builtin.command: "{{ t_home }}/taskcafe  web" 
+      ansible.builtin.command: "{{ t_home }}/taskcafe web" 
