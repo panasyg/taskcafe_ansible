@@ -23,6 +23,7 @@
       ansible.builtin.git:
         repo: 'https://github.com/panasyg/tc_binary.git'
         dest: /dist
+        force: yes
 
     - name: Give permissions to an existing file
       ansible.builtin.file:
