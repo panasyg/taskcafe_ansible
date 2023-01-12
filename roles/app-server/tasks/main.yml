@@ -22,7 +22,6 @@
 
     - name: install gdown
       ansible.builtin.pip:
-        virtualenv: /tmp/py3
         virtualenv_command: /usr/bin/python3 -m venv
         name: gdown
         state: forcereinstall
