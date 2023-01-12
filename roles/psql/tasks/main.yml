@@ -7,10 +7,10 @@
         - python3-pip
 
     - name: "Install Python packages"
-      pip: "name={{ item }}  state=present"
+      pip: 
         virtualenv: /tmp/py3
         virtualenv_command: /usr/bin/python3 -m venv
-      with_items:
+        name:
         - python3-setuptools
         - psycopg3-binary
 
