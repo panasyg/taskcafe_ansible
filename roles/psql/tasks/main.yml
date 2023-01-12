@@ -66,4 +66,12 @@
       become_user: postgres
       notify: restart postgres
 
+    - name: enable 1234
+      firewalld:
+        zone: public
+        port: 5432/tcp
+        permanent: true
+        state: enabled
+      become: yes
+
     
