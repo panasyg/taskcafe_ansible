@@ -1,25 +1,19 @@
 ---
     - name: "Install packages"
-      yum: "name={{ item }} state=present"
+      dnf: "name={{ item }} state=present"
       with_items:
         - postgresql
         - postgresql-server
-        - python3
-        - epel-release
-        - python-pip
 
-    - debug: var=ansible_host
-    - name: install pip-pack
-      ansible.builtin.command: pip3 install psycopg2-binary
-    - name: "Install Python packages"
-      yum: "name={{ item }}  state=present"
+    - name: "Install packages"
+      yum : "name={{ item }} state=present"
       with_items:
-        - python3-psycopg2 
-        
+        - python3-psycopg2
     - name: "Find out if PostgreSQL is initialized"
       ansible.builtin.stat:
         path: "/var/lib/pgsql/data/pg_hba.conf"
       register: postgres_data
+
     - name: "Initialize PostgreSQL"
       shell: "postgresql-setup initdb"
       when: not postgres_data.stat.exists
@@ -28,8 +22,7 @@
       service: "name={{ item }} state=started enabled=yes"
       with_items:
         - postgresql
-    
-      
+
     - name: "Create app database"
       postgresql_db:
         state: present
@@ -66,3 +59,5 @@
       become: yes
       become_user: postgres
       notify: restart postgres
+
+   
