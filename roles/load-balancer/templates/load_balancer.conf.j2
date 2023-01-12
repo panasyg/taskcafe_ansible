@@ -1,7 +1,7 @@
 upstream app {
         ip_hash;
-        server {{ app1_ip }}:3333;
-        server {{ app2_ip }}:3333;
+        server {{ ip1 }}:3333;
+        server {{ ip2 }}:3333;
 }
 
 server {
