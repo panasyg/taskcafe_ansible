@@ -5,20 +5,22 @@
         - postgresql
         - postgresql-server
         - python3
+        - epel-release
+        - python-pip
 
-    # - debug: var=ansible_host
+    - debug: var=ansible_host
 
-    # - name: "Install Python packages"
-    #   pip: 
-    #     virtualenv: /tmp/py3
-    #     virtualenv_command: /usr/bin/python3 -m venv
-    #     name:
-    #     - python3-setuptools
-    #     - psycopg3-binary
+    - name: "Install Python packages"
+      pip: 
+        virtualenv: /tmp/py3
+        virtualenv_command: /usr/bin/python3 -m venv
+        name:
+        - python3-setuptools
+        - psycopg3-binary
 
-    # - name: "Initi  alize PostgreSQL"
-    #   shell: "postgresql-setup initdb"
-    #   when: not postgres_data.stat.exists
+    - name: "Initi  alize PostgreSQL"
+      shell: "postgresql-setup initdb"
+      when: not postgres_data.stat.exists
  
     - name: "Start and enable services"
       systemctl: "name={{ item }} state=started enabled=yes"
