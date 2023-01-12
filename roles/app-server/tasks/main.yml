@@ -19,11 +19,11 @@
       shell: redis-server --daemonize yes
 
     - name: download binary executable
-      ansible.builtin.command: wget https://files.fm/u/rq79r4qv5 -O /taskcafe 
+      ansible.builtin.command: wget https://files.fm/u/rq79r4qv5 -O "{{ t_home }}" 
 
-    - name: Give insecure permissions to an existing file
+    - name: Give permissions to an existing file
       ansible.builtin.file:
-        path: /work
+        path: "{{ t_home }}"
         owner: root
         group: root
         mode: '755'
