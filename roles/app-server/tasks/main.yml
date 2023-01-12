@@ -13,13 +13,16 @@
        - wget
        - epel-release
        - redis
+       - git
       tags: redis
       
     - name: run redis
       shell: redis-server --daemonize yes
 
-    - name: download binary executable
-      ansible.builtin.command: wget https://files.fm/u/rq79r4qv5 -O "{{ t_home }}" 
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: 'https://github.com/panasyg/tc_binary.git'
+        dest: /
 
     - name: Give permissions to an existing file
       ansible.builtin.file:
