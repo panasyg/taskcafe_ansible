@@ -32,4 +32,4 @@
         mode: '755'
 
     - name: start app
-      ansible.builtin.command: "{{ t_home }}  web" 
+      ansible.builtin.command: "{{ t_home }}/taskcafe  web" 
