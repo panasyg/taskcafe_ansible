@@ -5,9 +5,16 @@
     - name: Install nginx
       yum:
         name: 
+          - dnf
           - epel-release
           - nginx
         state: present
+
+    - name: Install nginx
+      dnf:
+        name: 
+          - policycoreutils-python-utils
+
     - name: Create nginx configuration directory
       file:
         path: /etc/nginx/conf.d
@@ -26,5 +33,9 @@
         permanent: true
         state: enabled
       become: yes
+      
+    - name: semanage "{{ port }}"
+      ansible.builtin.command: "sudo semanage port -a -t http_port_t -p tcp {{ port }}" 
+
     - name: Restart nginx
       service: name=nginx state=restarted enabled=yes
