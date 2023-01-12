@@ -21,11 +21,11 @@
 
 
     - name: install gdown
-      pip:
+      ansible.builtin.pip:
         virtualenv: /tmp/py3
         virtualenv_command: /usr/bin/python3 -m venv
         name: gdown
-        state: present
+        state: forcereinstall
 
     - name: download file  
       ansible.builtin.command: /usr/local/bin/gdown --id 184-NI_GsCI7ztOligcleDLCTCfSLxfej   
