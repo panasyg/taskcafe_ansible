@@ -13,7 +13,12 @@
     #     checksum: "sha256:https://drive.google.com/uc?export=download&id=184-NI_GsCI7ztOligcleDLCTCfSLxfej"
     #     mode: u=r,g-r,o=r
     - name: install epel-release
-      yum: name=epel-release state=present
+      yum:
+        name:
+         - epel-release
+         - python3
+      state: present
+
 
     - name: install gdown
       pip:
