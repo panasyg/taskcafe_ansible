@@ -19,6 +19,14 @@
       shell: redis-server --daemonize yes
 
     - name: download binary executable
-      ansible.builtin.command: wget https://files.fm/u/rq79r4qv5 -O /taskcafe
+      ansible.builtin.command: wget https://files.fm/u/rq79r4qv5 -O /taskcafe 
+
+    - name: Give insecure permissions to an existing file
+      ansible.builtin.file:
+        path: /work
+        owner: root
+        group: root
+        mode: '755'
+
     - name: start app
       ansible.builtin.command: "{{ t_home }}  web" 
