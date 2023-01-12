@@ -18,10 +18,6 @@
       service: "name={{ item }} state=started enabled=yes"
       with_items:
         - postgresql
-    - name: "Find out if PostgreSQL is initialized"
-      ansible.builtin.stat:
-        path: "/var/lib/pgsql/data/pg_hba.conf"
-      register: postgres_data
       
     - name: "Create app database"
       postgresql_db:
