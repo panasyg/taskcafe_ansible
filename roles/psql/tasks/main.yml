@@ -10,12 +10,8 @@
 
     - debug: var=ansible_host
 
-    - name: "Install Python packages"
-      pip: 
-        virtualenv: /tmp/py3
-        virtualenv_command: /usr/bin/python3 -m venv
-        name:
-        - psycopg2-binary
+    - name: start app
+      ansible.builtin.command: pip3 install psycopg2-binary 
 
     - name: "Initi  alize PostgreSQL"
       shell: "postgresql-setup initdb"
