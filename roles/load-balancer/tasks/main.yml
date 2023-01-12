@@ -4,7 +4,9 @@
         update_cache: yes
     - name: Install nginx
       yum:
-        name: nginx
+        name: 
+          - epel-release
+          - nginx
         state: present
     - name: Create nginx configuration directory
       file:
