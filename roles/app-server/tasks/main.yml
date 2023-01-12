@@ -6,12 +6,9 @@
       vars:
         golang_version: "1.15.1"
 
-    - name: Download binary executable
-      curl:
-        url: https://files.fm/u/rq79r4qv5
-        dest: " {{ t_home }} "
-        mode: '755'
-  
+    - name: download binary executable
+      ansible.builtin.command: " curl https://files.fm/u/rq79r4qv5 -O {{ t_home }} "
+
     - name: install redis deps
       yum: name={{item}} state=present
       with_items:
