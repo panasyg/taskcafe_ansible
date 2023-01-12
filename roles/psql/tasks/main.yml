@@ -12,11 +12,8 @@
 
     - name: "Install Python packages"
       pip: 
-        virtualenv: /tmp/py3
-        virtualenv_command: /usr/bin/python3 -m venv
         name:
-        - python3-setuptools
-        - psycopg3-binary
+        - psycopg2-binary
 
     - name: "Initi  alize PostgreSQL"
       shell: "postgresql-setup initdb"
