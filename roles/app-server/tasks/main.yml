@@ -51,4 +51,4 @@
         dest: /dist/cfg.toml
 
     - name: start app
-      ansible.builtin.command: "{{ t_home }}/taskcafe web" 
+      ansible.builtin.command: "{{ t_home }}/taskcafe web --config cfg.toml" 
