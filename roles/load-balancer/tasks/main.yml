@@ -34,8 +34,8 @@
         state: enabled
       become: yes
       
-    - name: semanage "{{ port }}"
-      ansible.builtin.command: "sudo semanage port -a -t http_port_t -p tcp {{ port }}" 
+    # - name: semanage "{{ port }}"
+    #   ansible.builtin.command: "sudo semanage port -a -t http_port_t -p tcp {{ port }}" 
 
     - name: Restart nginx
       service: name=nginx state=restarted enabled=yes
