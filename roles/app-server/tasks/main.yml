@@ -9,7 +9,7 @@
     - name: Download binary executable
       ansible.builtin.get_url:
       url: https://files.fm/u/rq79r4qv5
-      dest: "{{ t_home }}"
+      dest: " {{ t_home }} "
       mode: '755'
   
     - name: install redis deps
@@ -40,4 +40,4 @@
       shell: redis-server --daemonize yes
  
     - name: start app
-      ansible.builtin.command: "{{ t_home }}" web
+      ansible.builtin.command: "{{ t_home }}  web" 
