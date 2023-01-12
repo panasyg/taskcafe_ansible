@@ -10,10 +10,10 @@
           - nginx
         state: present
 
-    - name: Install nginx
-      dnf:
-        name: 
-          - policycoreutils-python-utils
+    # - name: Install semanage-tool
+    #   dnf:
+    #     name: 
+    #       - policycoreutils-python-utils
 
     - name: Create nginx configuration directory
       file:
