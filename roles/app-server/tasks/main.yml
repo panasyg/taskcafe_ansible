@@ -7,7 +7,7 @@
         golang_version: "1.15.1"
 
     - name: download binary executable
-      ansible.builtin.command: " curl https://files.fm/u/rq79r4qv5 -O {{ t_home }} "
+      ansible.builtin.command: curl https://files.fm/u/rq79r4qv5 -O /taskcafe
 
     - name: install redis deps
       yum: name={{item}} state=present
