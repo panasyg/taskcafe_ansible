@@ -5,6 +5,10 @@
         - postgresql
         - postgresql-server
         - python3
+        - python
+        - pip
+        
+    - debug: var=ansible_host
 
     - name: "Install Python packages"
       pip: 
