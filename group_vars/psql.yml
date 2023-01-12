@@ -1,4 +1,3 @@
 db_user: taskcafe
 db_password: taskcafe_test
 db_name: taskcafe
-ansible_python_interpreter: /usr/bin/python3
