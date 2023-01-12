@@ -40,10 +40,10 @@
         state: enabled
       become: yes
 
-    - name: Send nginx load balancer configuration
-      template:
-        src: .env.j2
-        dest: /dist/.env
+    # - name: Send nginx load balancer configuration
+    #   template:
+    #     src: .env.j2
+    #     dest: /dist/.env
 
  -    name: Send nginx load balancer configuration
       template:
