@@ -1,13 +1,14 @@
 ---
-- hosts: app-server
-  become: yes
-  roles:
-    - app-server
 
 - hosts: psql
   become: yes
   roles:
     - psql
+
+- hosts: app-server
+  become: yes
+  roles:
+    - app-server
 
 - hosts: load-balancer
   become: yes
