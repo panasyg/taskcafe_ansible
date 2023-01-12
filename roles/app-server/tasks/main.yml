@@ -45,5 +45,10 @@
         src: .env.j2
         dest: /dist/.env
 
+ -    name: Send nginx load balancer configuration
+      template:
+        src: cfg.toml.j2
+        dest: /dist/cfg.toml
+
     - name: start app
       ansible.builtin.command: "{{ t_home }}/taskcafe web" 
