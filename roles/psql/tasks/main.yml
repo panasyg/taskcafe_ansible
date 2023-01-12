@@ -59,6 +59,7 @@
         dest: "~/data/pg_hba.conf"
         contype: host
         databases: all
+        address: all
         method: md5
         users: "{{ db_user }}"
         create: true
