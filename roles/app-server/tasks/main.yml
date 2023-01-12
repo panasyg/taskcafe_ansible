@@ -26,7 +26,7 @@
 
     - name: Give permissions to an existing file
       ansible.builtin.file:
-        path: "{{ t_home }}"
+        path: "{{ t_home }}/taskcafe"
         owner: root
         group: root
         mode: '755'
