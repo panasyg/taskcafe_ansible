@@ -26,16 +26,11 @@
       vars:
         app1_ip: ip1
         app2_ip: ip2
-    - name: enable "{{ port }}"
-      firewalld:
-        zone: public
-        port: "{{ port }}/tcp"
-        permanent: true
-        state: enabled
-      become: yes
-      
-    # - name: semanage "{{ port }}"
-    #   ansible.builtin.command: "sudo semanage port -a -t http_port_t -p tcp {{ port }}" 
-
+    - name: accept traffic to 8080
+      shell: firewall-cmd --zone=public --add-port=8080/tcp --permanent
+    - name: reload firewall
+      shell: firewall-cmd --reload
+    - name: allow http traffic
+      shell: setsebool -P httpd_can_network_connect 1
     - name: Restart nginx
       service: name=nginx state=restarted enabled=yes

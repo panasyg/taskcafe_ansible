@@ -16,6 +16,9 @@
   become: yes
   roles:
     - load-balancer
+  vars:
+    app1_ip: 10.26.0.125
+    app2_ip: 10.26.0.77
 
 # - hosts: jenkins
 #   become: yes
