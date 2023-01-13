@@ -1,9 +1,9 @@
 ---
 
-- hosts: psql
-  become: yes
-  roles:
-    - psql
+# - hosts: psql
+#   become: yes
+#   roles:
+#     - psql
 
 - hosts: postgres_clusters
   become: yes
