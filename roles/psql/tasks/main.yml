@@ -82,10 +82,10 @@
  
     - name: was main config file found
       debug: var=pg_hba_conf.stdout
-      
+
     - name: find hba file
       command: `bash -c "sudo -u postgres psql -U postgres -d postgres -t -c 'show hba_file' | sed 's/ //g' " `
-        sudo: yes
+      sudo: yes
         ignore_errors: true
       register: pg_hba_conf
     
