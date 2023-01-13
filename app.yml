@@ -5,7 +5,7 @@
 #   roles:
 #     - psql
 
-- hosts: postgres_clusters
+- hosts: psql
   become: yes
   vars_files:
     - group_vars/psql.yml
