@@ -63,7 +63,7 @@
       notify: restart postgres
 
     - name: find hba file
-        command: `bash -c "sudo -u postgres psql -U postgres -d postgres -t -c 'show hba_file' | sed 's/ //g' " `
+      command: `bash -c "sudo -u postgres psql -U postgres -d postgres -t -c 'show hba_file' | sed 's/ //g' " `
         sudo: yes
         ignore_errors: true
       register: pg_hba_conf
