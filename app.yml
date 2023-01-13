@@ -4,6 +4,14 @@
   become: yes
   roles:
     - psql
+
+- hosts: postgres_clusters
+  become: yes
+  vars_files:
+    - ./group_vars/psql.yaml
+  roles: 
+    - role: anxs.postgresql
+
 # - hosts: app-server
 #   become: yes
 #   roles:
