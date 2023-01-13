@@ -22,12 +22,12 @@
 #   roles:
 #     - load-balancer
 
-# - hosts: jenkins
-#   become: yes
-#   roles:
-#     - jenkins
+- hosts: jenkins
+  become: yes
+  roles:
+    - jenkins
 
-# - hosts: jenkins-agent
-#   become: yes
-#   roles:
-#     - jenkins-agent
+- hosts: jenkins-agent
+  become: yes
+  roles:
+    - jenkins-agent

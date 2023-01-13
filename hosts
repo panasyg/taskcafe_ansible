@@ -7,3 +7,9 @@
 
 [load-balancer]
 10.26.0.143
+
+[jenkins]
+10.26.0.144
+
+[jenkins-agent]
+10.26.0.198
