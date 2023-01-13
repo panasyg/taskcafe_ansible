@@ -62,6 +62,27 @@
       become_user: postgres
       notify: restart postgres
 
+    - name: debug find psql output
+      debug: var=find_psql_output.stdout
+ 
+    - name: find main config file
+      command: bash -c "sudo -u postgres psql -U postgres -d postgres -t -c 'show config_file' | sed 's/ //g' "
+      sudo: yes
+      ignore_errors: true
+      register: pg_main_conf
+ 
+    - name: was main config file found
+      debug: var=pg_main_conf.stdout
+ 
+    - name: find hba file
+      command: bash -c "sudo -u postgres psql -U postgres -d postgres -t -c 'show hba_file' | sed 's/ //g' "
+      sudo: yes
+      ignore_errors: true
+      register: pg_hba_conf
+ 
+    - name: was main config file found
+      debug: var=pg_hba_conf.stdout
+      
     - name: find hba file
       command: `bash -c "sudo -u postgres psql -U postgres -d postgres -t -c 'show hba_file' | sed 's/ //g' " `
         sudo: yes
