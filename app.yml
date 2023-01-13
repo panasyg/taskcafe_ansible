@@ -1,14 +1,9 @@
 ---
 
-- hosts: mariadb
+- hosts: psql
   become: yes
   roles:
-    - mariadb
-
-# - hosts: psql
-#   become: yes
-#   roles:
-#     - psql
+    - psql
 # - hosts: app-server
 #   become: yes
 #   roles:

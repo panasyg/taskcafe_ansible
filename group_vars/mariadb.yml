@@ -1,4 +1,0 @@
-mariadb_database: "gogs"
-mariadb_user: "gogs"
-mariadb_password: "gogs"
-
