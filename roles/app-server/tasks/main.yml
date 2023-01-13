@@ -10,7 +10,6 @@
       yum: name={{item}} state=present
       with_items:
        - make
-       - wget
        - epel-release
        - redis
        - git
@@ -39,13 +38,8 @@
         permanent: true
         state: enabled
       become: yes
-
-    # - name: Send nginx load balancer configuration
-    #   template:
-    #     src: .env.j2
-    #     dest: /dist/.env
-
-    - name: Send nginx load balancer configuration
+    
+    - name: Send db conf
       template:
         src: cfg.toml.j2
         dest: /dist/cfg.toml
