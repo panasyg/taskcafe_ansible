@@ -1,19 +1,23 @@
 ---
 
-- hosts: psql
+- hosts: mariadb
   become: yes
   roles:
-    - psql
+    - mariadb
 
-- hosts: app-server
-  become: yes
-  roles:
-    - app-server
+# - hosts: psql
+#   become: yes
+#   roles:
+#     - psql
+# - hosts: app-server
+#   become: yes
+#   roles:
+#     - app-server
 
-- hosts: load-balancer
-  become: yes
-  roles:
-    - load-balancer
+# - hosts: load-balancer
+#   become: yes
+#   roles:
+#     - load-balancer
 
 # - hosts: jenkins
 #   become: yes
