@@ -1,7 +1,7 @@
 ---
     - name: install Java
       yum:
-        name: default-jdk
+        name: java-1.8.0-openjdk
         state: present
     - name: add jenkins repo
       shell: curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
