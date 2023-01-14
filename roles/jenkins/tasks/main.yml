@@ -1,26 +1,12 @@
 ---
-    - name: install Java
-      yum:
-        name: java-11-openjdk
-        state: present
-    - name: install git
-      yum:
-        name: git
-        state: present
-    - name: install wget
-      yum:
-        name: wget
-        state: present
-    - name: add jenkins repo
-      shell: wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-    - name: update jenkins
-      shell: rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-    - name: update yum
-      yum:
-        update_cache: yes
-    - name: Install Jenkins
-      yum:
-        name: jenkins
-        state: present
-      tags:
-        - jenkins
+    - name: install java
+      ansible.builtin.import_role:
+        name: geerlingguy.java
+      become: yes
+
+    - name: install jenkins
+      ansible.builtin.import_role:
+        name: geerlingguy.jenkins
+      become: yes
+
+     
