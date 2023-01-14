@@ -1,4 +1,5 @@
-- name: install Java
+---
+    - name: install Java
       yum:
         name: java-11-openjdk
         state: present
