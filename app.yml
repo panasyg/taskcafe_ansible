@@ -1,31 +1,31 @@
 ---
 
-- hosts: psql
-  become: yes
-  vars_files:
-    - group_vars/psql.yml
-  roles: 
-    - role: anxs.postgresql
+# - hosts: psql
+#   become: yes
+#   vars_files:
+#     - group_vars/psql.yml
+#   roles: 
+#     - role: anxs.postgresql
 
-- hosts: app-server
-  become: yes
-  roles:
-    - app-server
+# - hosts: app-server
+#   become: yes
+#   roles:
+#     - app-server
 
-- hosts: load-balancer
-  become: yes
-  roles:
-    - load-balancer
-  vars:
-    app1_ip: 10.26.0.125
-    app2_ip: 10.26.0.77
+# - hosts: load-balancer
+#   become: yes
+#   roles:
+#     - load-balancer
+#   vars:
+#     app1_ip: 10.26.0.125
+#     app2_ip: 10.26.0.77
 
 - hosts: jenkins
   become: yes
   roles:
     - jenkins
 
-- hosts: jenkins-agent
-  become: yes
-  roles:
-    - jenkins-agent
+# - hosts: jenkins-agent
+#   become: yes
+#   roles:
+#     - jenkins-agent
