@@ -1,52 +1,12 @@
 ---
-    - name: install Java
-      yum:
-        name: java-1.8.0-openjdk
-        state: present
-    - name: add jenkins repo
-      shell: curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
-    - name: update jenkins
-      shell: rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
-    - name: update yum
-      yum:
-        update_cache: yes
-    - name: Install Jenkins
-      yum:
-        name: jenkins
-        state: present
-      tags:
-        - jenkins
-    - name: Copy jenkins conf
-      copy:
-        src: ~/jenkins-config.tar.gz
-        dest: ~/jenkins-config.tar.gz
-    - name: Copy jenkins home
-      copy:
-        src: ~/jenkins-home.tar.gz
-        dest: ~/jenkins-home.tar.gz
-    - name: Stop Jenkins service
-      service:
-        name: jenkins
-        state: stopped
-    - name: Remove existing Jenkins home directory
-      file:
-        path: /var/lib/jenkins/home
-        state: absent
-    - name: Extract Jenkins home directory from backup
-      shell: tar xzf ~/jenkins-home.tar.gz -C /
-    - name: Remove existing Jenkins configuration files
-      file:
-        path: /etc/default/jenkins
-        state: absent
-      file:
-        path: /etc/sysconfig/jenkins
-        state: absent
-      file:
-        path: /etc/init.d/jenkins
-        state: absent
-    - name: Extract Jenkins configuration files from backup
-      shell: tar xzf ~/jenkins-config.tar.gz -C /
-    - name: Start Jenkins service
-      service:
-        name: jenkins
-        state: started
+    - name: install java
+      ansible.builtin.import_role:
+        name: geerlingguy.java
+      become: yes
+
+    - name: install jenkins
+      ansible.builtin.import_role:
+        name: geerlingguy.jenkins
+      become: yes
+
+     
