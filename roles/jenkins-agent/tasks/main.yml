@@ -6,6 +6,6 @@
     - name: installing dependencies for an agent
       yum:
         name: 
-          - default-jdk
+          - java-11-openjdk
           - git
         state: present
