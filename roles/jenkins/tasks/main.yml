@@ -27,10 +27,9 @@
         state: started
         enabled: yes
         
-    - name: do not permit traffic in default zone on port 8081/tcp
-      ansible.posix.firewalld:
-        port: 8080/tcp
-        zone: public
-        permanent: yes
-        immediate: yes
-        state: enabled
+    - name: Add ports to firewall
+     firewalld:
+       port: 8080/tcp
+       state: enabled
+       immediate: true
+       permanent: true
