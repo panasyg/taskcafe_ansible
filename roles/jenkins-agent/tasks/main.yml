@@ -2,8 +2,10 @@
     - name: update yum
       yum:
         update_cache: yes
-    - name: install jdk
+        
+    - name: installing dependencies for an agent
       yum:
-        name: default-jdk
+        name: 
+          - default-jdk
+          - git
         state: present
-
