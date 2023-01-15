@@ -13,6 +13,7 @@
        - epel-release
        - redis
        - git
+       - daemonize
       tags: redis
       
     - name: run redis
@@ -45,4 +46,4 @@
         dest: /dist/cfg.toml
 
     - name: start app
-      ansible.builtin.command: "{{ t_home }}/taskcafe web --config /dist/cfg.toml" 
+      ansible.builtin.command: "daemonize {{ t_home }}/taskcafe web --config /dist/cfg.toml" 
