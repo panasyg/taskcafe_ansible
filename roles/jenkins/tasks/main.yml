@@ -28,8 +28,8 @@
         enabled: yes
         
     - name: Add ports to firewall
-     firewalld:
-       port: 8080/tcp
-       state: enabled
-       immediate: true
-       permanent: true
+      firewalld:
+        port: 8080/tcp
+        state: enabled
+        immediate: true
+        permanent: true
