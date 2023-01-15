@@ -46,5 +46,3 @@
 
     - name: start app
       ansible.builtin.command: "{{ t_home }}/taskcafe web --config /dist/cfg.toml" 
-      async: 10
-      poll: 0
