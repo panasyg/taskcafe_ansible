@@ -24,7 +24,7 @@
   roles:
     - jenkins
 
-- hosts: jenkins-agent
-  become: yes
-  roles:
-    - jenkins-agent
+# - hosts: jenkins-agent
+#   become: yes
+#   roles:
+#     - jenkins-agent
